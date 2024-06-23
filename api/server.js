@@ -4,6 +4,9 @@ import taskRouter from "./router/taskRouter.js";
 //import reminderRouter from "./router/taskRouter.js";
 import cors from "cors";
 import "dotenv/config";
+import path from "path";
+
+const _dirname = path.resolve();
 
 //Initialise express app
 const app = express();
@@ -26,6 +29,9 @@ app.use(cors(corsOptions));
 connectMongo();
 
 //ROUTES - receive client requests
+//Server side rendering
+app.use("/", express.static(path.join(_dirname, "frontend")));
+
 //Task routes
 
 app.use("/api/tasks", taskRouter);

@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import "dotenv/config";
-const MONGO_BD_CONNECTION_URL = process.env.MONGO_BD_CONNECTION_URL;
+const MONGO_BD_CONNECTION_URL = process.env.MONGO_DB_CONNECTION_URL;
 
 export const connectMongo = () => {
   try {
