@@ -63,12 +63,12 @@ taskRouter.patch("/:id", (req, res) => {
         data: updatedTask,
       });
     })
-    .catch(
+    .catch((error) => {
       res.json({
         status: "error",
         data: error.message || "Cannot create the task",
-      })
-    );
+      });
+    });
 });
 
 taskRouter.delete("/:id", (req, res) => {

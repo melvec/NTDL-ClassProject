@@ -19,6 +19,11 @@ export const TaskContainer = () => {
     fetchTasks();
   }, []);
 
+  // Entry Task
+  const entryTask = taskList.filter((task) => task.type === "entry");
+  // Unwanted Task
+  const unwantedTask = taskList.filter((task) => task.type === "unwanted");
+
   return (
     <div>
       <AddTaskForm fetchTasks={fetchTasks} />
@@ -28,7 +33,7 @@ export const TaskContainer = () => {
 
           {/* All tasks */}
           <ListGroup>
-            {taskList.map((task) => (
+            {entryTask.map((task) => (
               <ListGroup.Item
                 key={task._id}
                 className="d-flex justify-content-between align-items-center"
@@ -41,12 +46,12 @@ export const TaskContainer = () => {
         <Col>
           <Alert>Unwanted tasks</Alert>
           <ListGroup>
-            {taskList.map((task) => (
+            {unwantedTask.map((task) => (
               <ListGroup.Item
                 key={task._id}
                 className="d-flex justify-content-between align-items-center"
               >
-                <TaskListItem task={task} />
+                <TaskListItem task={task} fetchTasks={fetchTasks} />
               </ListGroup.Item>
             ))}
           </ListGroup>

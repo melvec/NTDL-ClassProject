@@ -1,6 +1,6 @@
 import React from "react";
 import { Badge, Button, Stack } from "react-bootstrap";
-import { BsArrowRight, BsTrash } from "react-icons/bs";
+import { BsArrowRight, BsArrowLeft, BsTrash } from "react-icons/bs";
 import { updateTask, deleteTask } from "../axios/taskAxios";
 
 export const TaskListItem = (props) => {
@@ -37,7 +37,9 @@ export const TaskListItem = (props) => {
 
       <Stack direction="horizontal" gap={2}>
         <Button variant="warning" onClick={handleOnSwitch}>
-          <BsArrowRight />
+          {task.type === "entry" && <BsArrowRight />}
+
+          {task.type === "unwanted" && <BsArrowLeft />}
         </Button>
         <Button variant="danger">
           <BsTrash onClick={handleOnDelete} />
