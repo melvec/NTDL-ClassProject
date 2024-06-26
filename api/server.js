@@ -1,7 +1,7 @@
 import express from "express";
 import { connectMongo } from "./config/dbConfig.js";
 import taskRouter from "./router/taskRouter.js";
-//import reminderRouter from "./router/taskRouter.js";
+
 import cors from "cors";
 import "dotenv/config";
 import path from "path";
@@ -35,7 +35,6 @@ app.use("/", express.static(path.join(_dirname, "frontend")));
 //Task routes
 
 app.use("/api/tasks", taskRouter);
-//app.use("/api/reminders", reminderRouter);
 
 //Start server
 app.listen(PORT, (error) => {
